@@ -35,15 +35,15 @@ function ForgotPass() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            // Step 1: Backend ko email bhejein taki wo OTP bhej sake
+           
             const response = await axios.post('http://localhost:8080/api/auth/forgot-password', {
-                email: email // email state se value bhej rahe hain
+                email: email 
             });
 
-            // Step 2: Backend se success message dikhayein
+          
             alert(response.data);
 
-            // Step 3: User ko agle page par bhejein aur email sath mein pass karein
+           
             navigate('/ResetPassOtp', { state: { email: email } });
 
         } catch (error) {
@@ -62,8 +62,8 @@ function ForgotPass() {
                     <input
                         type="email"
                         placeholder="Enter your email address"
-                        value={email} // Input ko state se joda
-                        onChange={(e) => setEmail(e.target.value)} // Har badlav par state update hoga
+                        value={email} 
+                        onChange={(e) => setEmail(e.target.value)} 
                         required
                         style={inputStyles}
                     />

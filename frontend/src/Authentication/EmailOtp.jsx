@@ -79,7 +79,7 @@ function EmailOtp() {
     // Use optional chaining to safely access email
     const email = location.state?.email;
 
-    // ✅ CRITICAL FIX: The condition is now placed INSIDE the useEffect hook.
+    // CRITICAL FIX: The condition is now placed INSIDE the useEffect hook.
     useEffect(() => {
         if (!email) {
             // If no email is passed in the state, redirect to the login page.
@@ -137,7 +137,7 @@ function EmailOtp() {
                         required
                     />
 
-                    {/* ✨ IMPROVEMENT: Display error message directly in the UI */}
+                    {/*  IMPROVEMENT: Display error message directly in the UI */}
                     {error && <p style={errorTextStyles}>{error}</p>}
 
                     <button
@@ -145,7 +145,7 @@ function EmailOtp() {
                         style={loading ? disabledButtonStyles : buttonStyles}
                         disabled={loading}
                     >
-                        {/* ✨ IMPROVEMENT: Show a loading state to the user */}
+                        {/*  IMPROVEMENT: Show a loading state to the user */}
                         {loading ? 'Verifying...' : 'Verify Account'}
                     </button>
                 </form>
