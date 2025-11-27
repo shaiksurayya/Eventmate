@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import './AuthForm.css'; // आपकी CSS फाइल
+import './AuthForm.css'; 
 
-// AuthContext को यहाँ से हटा दिया गया है, क्योंकि टोकन अब OTP वेरिफिकेशन के बाद ही मिलेगा।
+
 
 const Login = () => {
   const [email, setEmail] = useState('');
@@ -17,15 +17,13 @@ const Login = () => {
     const userCredentials = { email, password };
     
     try {
-      // Step 1: Backend को लॉगिन रिक्वेस्ट भेजें।
-      // Backend अब टोकन नहीं, सिर्फ एक सफलता का मैसेज भेजेगा।
+      
       const response = await axios.post('http://localhost:8080/api/auth/login', userCredentials);
       
-      // Step 2: Backend से आए मैसेज को alert में दिखाएं (जैसे, "OTP sent to your email...")
+      
       alert(response.data);
       
-      // Step 3: User को OTP वाले पेज पर भेजें और email को state में पास करें।
-      // यह ज़रूरी है ताकि OTP पेज को पता हो कि किसका ईमेल वेरिफाई करना है।
+      
       navigate('/EmailOtp', { state: { email: email } }); 
 
     } catch (error) {
