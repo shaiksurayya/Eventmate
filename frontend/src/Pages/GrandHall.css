@@ -1,13 +1,15 @@
-/* GrandHall.css - elegant, responsive layout */
+/* =========================
+   Grand Hall Page Styling
+   ========================= */
 
-:root{
-  --accent:#b98b36; /* subtle gold */
-  --muted:#6b6b6b;
-  --card-bg:#ffffff;
+:root {
+  --accent: #b98b36; /* subtle gold */
+  --muted: #6b6b6b;
+  --card-bg: #ffffff;
   --page-bg: #fbfaf8;
 }
 
-/* Page reset */
+/* PAGE RESET */
 .gh-page {
   font-family: "Poppins", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
   color: #222;
@@ -15,7 +17,7 @@
   line-height: 1.45;
 }
 
-/* HERO */
+/* HERO SECTION */
 .gh-hero {
   position: relative;
   height: 56vh;
@@ -48,13 +50,12 @@
 .gh-hero-content h1 {
   font-size: 2.4rem;
   margin: 0 0 10px;
-  letter-spacing: 0.2px;
-  text-shadow: 0 6px 22px rgba(0,0,0,.45);
+  text-shadow: 0 6px 22px rgba(0, 0, 0, 0.45);
 }
 .gh-hero-content p {
   margin: 0 auto;
   max-width: 760px;
-  color: rgba(255,255,255,0.92);
+  color: rgba(255, 255, 255, 0.92);
   font-size: 1.05rem;
 }
 
@@ -66,28 +67,46 @@
   background: transparent;
 }
 .gh-alt {
-  background: linear-gradient(180deg, rgba(255,250,245,0.6), transparent);
+  background: linear-gradient(180deg, rgba(255, 250, 245, 0.6), transparent);
   border-radius: 12px;
 }
 .gh-section-header {
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   margin-bottom: 16px;
 }
 .gh-section-header h2 {
   margin: 0;
   font-size: 1.35rem;
   color: #1f1f1f;
-  letter-spacing: 0.2px;
 }
 
-/* GRID */
-.gh-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+/* ===== VENUES SECTION — Horizontal Scroll ===== */
+.gh-grid.venues {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
   gap: 18px;
+  padding-bottom: 12px;
+  scroll-behavior: smooth;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.gh-grid.venues::-webkit-scrollbar {
+  display: none;
+}
+.gh-grid.venues .gh-card {
+  flex: 0 0 260px;
+}
+
+/* ===== OTHER SECTIONS — Centered Grid ===== */
+.gh-grid:not(.venues) {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  justify-items: center;
+  align-items: start;
 }
 
 /* CARD */
@@ -95,42 +114,40 @@
   background: var(--card-bg);
   border-radius: 12px;
   overflow: hidden;
-  box-shadow: 0 8px 20px rgba(23,23,23,0.06);
-  transition: transform .25s ease, box-shadow .25s ease;
-  display:flex;
-  flex-direction:column;
+  box-shadow: 0 8px 20px rgba(23, 23, 23, 0.06);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  display: flex;
+  flex-direction: column;
 }
 .gh-card:hover {
   transform: translateY(-6px);
-  box-shadow: 0 18px 40px rgba(15,15,15,0.12);
+  box-shadow: 0 18px 40px rgba(15, 15, 15, 0.12);
 }
-
 .gh-card-media {
   position: relative;
-  width:100%;
+  width: 100%;
   height: 150px;
   overflow: hidden;
 }
 .gh-card-media img {
-  width:100%;
-  height:100%;
-  object-fit:cover;
-  transition: transform .5s ease;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
 }
 .gh-card:hover .gh-card-media img {
   transform: scale(1.06);
 }
-
 .gh-card-overlay {
   position: absolute;
   inset: 0;
-  display:flex;
-  align-items:flex-end;
-  justify-content:center;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
   padding: 12px;
-  background: linear-gradient(180deg, rgba(0,0,0,0) 40%, rgba(0,0,0,0.45) 100%);
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0) 40%, rgba(0, 0, 0, 0.45) 100%);
   opacity: 0;
-  transition: opacity .25s ease;
+  transition: opacity 0.25s ease;
 }
 .gh-card:hover .gh-card-overlay {
   opacity: 1;
@@ -143,9 +160,11 @@
   border-radius: 8px;
   cursor: pointer;
   font-weight: 600;
-  box-shadow: 0 6px 18px rgba(185,139,54,0.18);
+  box-shadow: 0 6px 18px rgba(185, 139, 54, 0.18);
 }
-.gh-cta:hover { transform: translateY(-2px); }
+.gh-cta:hover {
+  transform: translateY(-2px);
+}
 
 /* BODY */
 .gh-card-body {
@@ -162,7 +181,7 @@
   font-size: 0.92rem;
 }
 
-/* small screens */
+/* SMALL SCREENS */
 @media (max-width: 640px) {
   .gh-hero {
     height: 44vh;
@@ -170,8 +189,7 @@
   .gh-hero-content h1 {
     font-size: 1.6rem;
   }
-  .gh-card-media { height: 140px; }
+  .gh-card-media {
+    height: 140px;
+  }
 }
-
-/* extra polish */
-.gh-section + .gh-section { margin-top: 18px; }

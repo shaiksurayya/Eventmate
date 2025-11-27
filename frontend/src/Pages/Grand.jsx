@@ -51,18 +51,18 @@ export default function Grand() {
       role: "Destination weddings, engagement and corporate events",
       img: "https://images.pexels.com/photos/614810/pexels-photo-614810.jpeg?auto=compress&cs=tinysrgb&w=600",
     },
-    {
-      id: 3,
-      name: "Himanshu Sharma",
-      role: "Engagements, birthdays and luxury weddings",
-      img: "https://media.istockphoto.com/id/1412021265/photo/head-shot-portrait-smiling-bearded-man-looking-at-camera.jpg?s=2048x2048&w=is&k=20&c=M4dFUZwVsUEUfLi5ixFjubRgx2ly-QxV5llizOAz3rs=",
-    },
-    {
-      id: 4,
-      name: "Aakash Pandey",
-      role: "All types of events and parties",
-      img: "https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&w=600",
-    },
+    // {
+    //   id: 3,
+    //   name: "Himanshu Sharma",
+    //   role: "Engagements, birthdays and luxury weddings",
+    //   img: "https://media.istockphoto.com/id/1412021265/photo/head-shot-portrait-smiling-bearded-man-looking-at-camera.jpg?s=2048x2048&w=is&k=20&c=M4dFUZwVsUEUfLi5ixFjubRgx2ly-QxV5llizOAz3rs=",
+    // },
+    // {
+    //   id: 4,
+    //   name: "Aakash Pandey",
+    //   role: "All types of events and parties",
+    //   img: "https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&w=600",
+    // },
   ];
 
   const photographers = [

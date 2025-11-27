@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 const recommendations = [
   { id: 2, text: 'A grand setting for unforgettable moments.', img: 'images/rec2.jpeg', page: 'grand' },
   { id: 3, text: 'Modern style meets classic charm.', img: 'images/rec3.jpg', page: 'modern' },
-  { id: 4, text: 'Where every detail is perfectly planned.', img: 'images/rec4.jpeg', page: 'planning' },
+  { id: 4, text: 'Where every detail is perfectly planned.', img: 'images/rec1.jpeg', page: 'planning' },
 ];
 
 const RecommendationCard = ({ item, navigate }) => {
