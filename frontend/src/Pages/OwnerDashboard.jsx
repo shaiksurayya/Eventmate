@@ -1,7 +1,7 @@
 import React from "react";
-import { Link, useNavigate } from "react-router-dom";
-import { useOwnerAuth } from "../Context/OwnerAuthContext"; // Using Owner Auth Context
-import "./OwnerDashboard.css"; // External CSS file
+import { NavLink, useNavigate } from "react-router-dom";
+import { useOwnerAuth } from "../Context/OwnerAuthContext"; // Owner Auth Context
+import "./Dashboard.css"; // Reuse the same dashboard CSS
 
 const OwnerDashboardLayout = ({ children }) => {
   const { logoutOwner } = useOwnerAuth();
@@ -16,52 +16,62 @@ const OwnerDashboardLayout = ({ children }) => {
     <div className="dashboard-layout">
       {/* Sidebar */}
       <aside className="dashboard-sidebar">
-        <h2 className="dashboard-title">Dashboard</h2>
+        <h2 className="dashboard-title">Owner Dashboard</h2>
         <ul className="dashboard-menu">
-          <li><Link to="/owner/manage-halls">Add Halls</Link></li>
-          <li><Link to="/owner/manage-halls-info">Why Add Halls?</Link></li>
-          <li><Link to="/owner/bookings">Bookings</Link></li>
-          <li><Link to="/owner/contact-eventmate">Contact Eventmate</Link></li>
-          {/* <li><Link to="/owner/profile">Profile</Link></li> */}
+          <li>
+            <NavLink
+              to="/owner/manage-halls"
+              className={({ isActive }) =>
+                isActive ? "menu-link active" : "menu-link"
+              }
+            >
+              Add Halls
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              to="/owner/manage-halls-info"
+              className={({ isActive }) =>
+                isActive ? "menu-link active" : "menu-link"
+              }
+            >
+              Why Add Halls?
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              to="/owner/bookings"
+              className={({ isActive }) =>
+                isActive ? "menu-link active" : "menu-link"
+              }
+            >
+              Bookings
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              to="/owner/contact-eventmate"
+              className={({ isActive }) =>
+                isActive ? "menu-link active" : "menu-link"
+              }
+            >
+              Contact Eventmate
+            </NavLink>
+          </li>
         </ul>
 
-        {/* Logout Button
-        <button 
-          className="logout-btn"
-          onClick={handleLogout}
-        >
+        {/* Optional Logout Button */}
+        {/* 
+        <button className="logout-btn" onClick={handleLogout}>
           Logout
-        </button> */}
+        </button> 
+        */}
       </aside>
 
-      {/* Main content */}
-      <div className="dashboard-content">
-        {/* <div className="dashboard-topbar">
-          <h3>Welcome, Owner</h3>
-        </div> */}
-        {children}
-      </div>
+      {/* Main Content */}
+      <div className="dashboard-content">{children}</div>
     </div>
   );
 };
 
 export default OwnerDashboardLayout;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

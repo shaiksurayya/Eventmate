@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, useNavigate, useLocation } from "react-router-dom";
+import { NavLink, useNavigate, useLocation } from "react-router-dom";
 import { useAuth } from "../Context/AuthContext";
 import "./Dashboard.css";
 
@@ -10,13 +10,12 @@ const DashboardLayout = ({ children }) => {
 
   // ✅ Hide sidebar for specific pages
   const hideSidebar =
-    location.pathname.startsWith("/halls") ||
+    // location.pathname.startsWith("/halls") ||
     location.pathname.startsWith("/hallbookingform") ||
     location.pathname.startsWith("/checkavailabilityform") ||
     location.pathname.startsWith("/booking-suggestions") ||
     location.pathname.startsWith("/successmsg") ||
     location.pathname.startsWith("/recommendationPages") ||
-    // ✅ Added new pages where sidebar should be hidden
     location.pathname === "/modern" ||
     location.pathname === "/grand" ||
     location.pathname === "/elegant" ||
@@ -29,40 +28,111 @@ const DashboardLayout = ({ children }) => {
 
   return (
     <div className="dashboard-layout">
-      {/* Sidebar — hidden on specific pages */}
+      {/* Sidebar */}
       {!hideSidebar && (
         <aside className="dashboard-sidebar">
           <h2 className="dashboard-title">Dashboard</h2>
+
           <ul className="dashboard-menu">
-            <li><Link to="/findhall">Find Hall</Link></li>
-            <li><Link to="/halls">Halls by Owners</Link></li>
-            <li><Link to="/bookings">Bookings</Link></li>
-            <li><Link to="/photographers">Photographers</Link></li>
-            <li><Link to="/planners">Planners</Link></li>
-            <li><Link to="/cakes">Cakes</Link></li>
-            <li><Link to="/attire">Attire</Link></li>
-            {/* <li><Link to="/profilesettings">Profile Settings</Link></li> */}
+            <li>
+{/* 
+               <li>
+               <NavLink
+              to="/home"
+              end
+              className={({ isActive }) =>
+                isActive ? "menu-link active" : "menu-link"
+              }
+            >
+              Home
+            </NavLink>
+          </li> */}
+              <NavLink
+                to="/findhall"
+                className={({ isActive }) =>
+                  isActive ? "menu-link active" : "menu-link"
+                }
+              >
+                Find Hall
+              </NavLink>
+            </li>
+
+            <li>
+              <NavLink
+                to="/halls"
+                className={({ isActive }) =>
+                  isActive ? "menu-link active" : "menu-link"
+                }
+              >
+                Halls by Owners
+              </NavLink>
+            </li>
+
+            <li>
+              <NavLink
+                to="/bookings"
+                className={({ isActive }) =>
+                  isActive ? "menu-link active" : "menu-link"
+                }
+              >
+                Bookings
+              </NavLink>
+            </li>
+
+            <li>
+              <NavLink
+                to="/photographers"
+                className={({ isActive }) =>
+                  isActive ? "menu-link active" : "menu-link"
+                }
+              >
+                Photographers
+              </NavLink>
+            </li>
+
+            <li>
+              <NavLink
+                to="/planners"
+                className={({ isActive }) =>
+                  isActive ? "menu-link active" : "menu-link"
+                }
+              >
+                Planners
+              </NavLink>
+            </li>
+
+            <li>
+              <NavLink
+                to="/cakes"
+                className={({ isActive }) =>
+                  isActive ? "menu-link active" : "menu-link"
+                }
+              >
+                Cakes
+              </NavLink>
+            </li>
+
+            <li>
+              <NavLink
+                to="/attire"
+                className={({ isActive }) =>
+                  isActive ? "menu-link active" : "menu-link"
+                }
+              >
+                Attire
+              </NavLink>
+            </li>
           </ul>
 
           {/* Optional Logout Button */}
-          {/* <button
+          {/* 
+          <button
             className="logout-btn"
             onClick={handleLogout}
-            style={{
-              marginTop: "auto",
-              padding: "10px 20px",
-              backgroundColor: "#e63946",
-              color: "#fff",
-              border: "none",
-              borderRadius: "6px",
-              cursor: "pointer",
-              width: "80%",
-              alignSelf: "center",
-              fontWeight: "500",
-            }}
           >
             Logout
-          </button> */}
+          </button> 
+          */}
         </aside>
       )}
 
@@ -73,3 +143,92 @@ const DashboardLayout = ({ children }) => {
 };
 
 export default DashboardLayout;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// import React from "react";
+// import { NavLink, Outlet } from "react-router-dom";
+// import "./DashboardLayout.css";
+
+// const DashboardLayout = () => {
+//   return (
+//     <div className="dashboard-container">
+      
+//       {/* Sidebar */}
+//       <div className="sidebar">
+//         <h2 className="logo">Eventify</h2>
+
+//         <ul className="menu">
+
+//           <li>
+//             <NavLink
+//               to="/dashboard"
+//               end
+//               className={({ isActive }) =>
+//                 isActive ? "menu-link active" : "menu-link"
+//               }
+//             >
+//               Overview
+//             </NavLink>
+//           </li>
+
+//           <li>
+//             <NavLink
+//               to="/dashboard/find-hall"
+//               className={({ isActive }) =>
+//                 isActive ? "menu-link active" : "menu-link"
+//               }
+//             >
+//               Find Hall
+//             </NavLink>
+//           </li>
+
+//           <li>
+//             <NavLink
+//               to="/dashboard/bookings"
+//               className={({ isActive }) =>
+//                 isActive ? "menu-link active" : "menu-link"
+//               }
+//             >
+//               My Bookings
+//             </NavLink>
+//           </li>
+
+//           <li>
+//             <NavLink
+//               to="/dashboard/profile"
+//               className={({ isActive }) =>
+//                 isActive ? "menu-link active" : "menu-link"
+//               }
+//             >
+//               Profile
+//             </NavLink>
+//           </li>
+
+//         </ul>
+//       </div>
+
+//       {/* Main Content Area */}
+//       <div className="dashboard-content">
+//         <Outlet />
+//       </div>
+
+//     </div>
+//   );
+// };
+
+// export default DashboardLayout;
