@@ -47,6 +47,16 @@ const DashboardLayout = ({ children }) => {
               Home
             </NavLink>
           </li> */}
+                  <li>
+              <NavLink
+                to="/bookings"
+                className={({ isActive }) =>
+                  isActive ? "menu-link active" : "menu-link"
+                }
+              >
+                Home
+              </NavLink>
+            </li>
               <NavLink
                 to="/findhall"
                 className={({ isActive }) =>
@@ -68,16 +78,7 @@ const DashboardLayout = ({ children }) => {
               </NavLink>
             </li>
 
-            <li>
-              <NavLink
-                to="/bookings"
-                className={({ isActive }) =>
-                  isActive ? "menu-link active" : "menu-link"
-                }
-              >
-                Bookings
-              </NavLink>
-            </li>
+          
 
             <li>
               <NavLink
@@ -158,77 +159,3 @@ export default DashboardLayout;
 
 
 
-
-
-// import React from "react";
-// import { NavLink, Outlet } from "react-router-dom";
-// import "./DashboardLayout.css";
-
-// const DashboardLayout = () => {
-//   return (
-//     <div className="dashboard-container">
-      
-//       {/* Sidebar */}
-//       <div className="sidebar">
-//         <h2 className="logo">Eventify</h2>
-
-//         <ul className="menu">
-
-//           <li>
-//             <NavLink
-//               to="/dashboard"
-//               end
-//               className={({ isActive }) =>
-//                 isActive ? "menu-link active" : "menu-link"
-//               }
-//             >
-//               Overview
-//             </NavLink>
-//           </li>
-
-//           <li>
-//             <NavLink
-//               to="/dashboard/find-hall"
-//               className={({ isActive }) =>
-//                 isActive ? "menu-link active" : "menu-link"
-//               }
-//             >
-//               Find Hall
-//             </NavLink>
-//           </li>
-
-//           <li>
-//             <NavLink
-//               to="/dashboard/bookings"
-//               className={({ isActive }) =>
-//                 isActive ? "menu-link active" : "menu-link"
-//               }
-//             >
-//               My Bookings
-//             </NavLink>
-//           </li>
-
-//           <li>
-//             <NavLink
-//               to="/dashboard/profile"
-//               className={({ isActive }) =>
-//                 isActive ? "menu-link active" : "menu-link"
-//               }
-//             >
-//               Profile
-//             </NavLink>
-//           </li>
-
-//         </ul>
-//       </div>
-
-//       {/* Main Content Area */}
-//       <div className="dashboard-content">
-//         <Outlet />
-//       </div>
-
-//     </div>
-//   );
-// };
-
-// export default DashboardLayout;

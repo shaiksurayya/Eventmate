@@ -99,7 +99,7 @@ function EmailOtp() {
             if (apiToken) {
                 login(apiToken); // Save token to context and localStorage
                 alert("Account verified successfully!"); // This can be replaced with a more modern notification
-                navigate('/FindHall'); // Redirect to the next page
+                navigate('/bookings'); // Redirect to the next page
             } else {
                 setError("Verification failed: Token not received from server.");
             }

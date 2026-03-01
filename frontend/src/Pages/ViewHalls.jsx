@@ -1,6 +1,7 @@
 
 import React, { useEffect, useState } from "react";
 import "./ViewHalls.css";
+import { useNavigate } from "react-router-dom";
 
 const ViewHalls = () => {
   const [halls, setHalls] = useState([]);
@@ -61,6 +62,12 @@ const ViewHalls = () => {
       if (!response.ok) throw new Error("Failed to book hall");
 
       setBookingConfirmed(true);
+
+// Small delay so user sees confirmation
+setTimeout(() => {
+  closeModal();
+  navigate("/bookings"); // go to bookings page
+}, 1500);
     } catch (error) {
       console.error("Booking failed:", error);
       alert("Error booking hall! Try again.");
@@ -138,3 +145,22 @@ const ViewHalls = () => {
 };
 
 export default ViewHalls;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

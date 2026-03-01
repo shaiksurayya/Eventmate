@@ -410,7 +410,10 @@ const ConditionalFooter = () => {
 const DashboardRoutes = () => (
   <DashboardLayout>
     <Routes>
-      <Route path="/home" element ={<Home />} />
+      {/* ✅ Default landing page for dashboard */}
+      <Route path="/" element={<Navigate to="/bookings" replace />} />
+
+      <Route path="/home" element={<Home />} />
       <Route path="/bookings" element={<Bookings />} />
       <Route path="/findhall" element={<FindHall />} />
       <Route path="/halls" element={<ViewHalls />} />
@@ -431,7 +434,6 @@ const DashboardRoutes = () => (
     </Routes>
   </DashboardLayout>
 );
-
 
 // 🏢 Owner Dashboard Routes
 const OwnerDashboardRoutes = () => (

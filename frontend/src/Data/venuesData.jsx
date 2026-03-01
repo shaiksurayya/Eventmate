@@ -30,3 +30,54 @@ export const allVenues = [
   { id: 27, name: 'LA Mirage Convention Center', image: 'https://images.unsplash.com/photo-1454023492550-5696f8ff10e1?q=80&w=1200&auto=format&fit=crop', location: 'Kerala', food: 'Veg, Non-Veg', capacity: 600, eventType: 'Corporate Event' }
 
 ];
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// import { useParams } from "react-router-dom";
+// import { useEffect, useState } from "react";
+
+// const Venue = () => {
+//   const { id } = useParams();
+//   const [venue, setVenue] = useState(null);
+
+//   useEffect(() => {
+//     const token = localStorage.getItem("token");
+
+//     fetch(`http://localhost:8080/api/managehalls/${id}`, {
+//       headers: {
+//         "Authorization": `Bearer ${token}`
+//       }
+//     })
+//       .then(res => res.json())
+//       .then(data => setVenue(data))
+//       .catch(err => console.error(err));
+//   }, [id]);
+
+//   if (!venue) return <p>Loading...</p>;
+
+//   return (
+//     <div>
+//       <h2>{venue.hallName}</h2>
+//       <p>{venue.hallAddress}</p>
+//       <p>Capacity: {venue.capacity}</p>
+//       <p>Budget: ₹{venue.budget}</p>
+//     </div>
+//   );
+// };
+
+// export default Venue;
