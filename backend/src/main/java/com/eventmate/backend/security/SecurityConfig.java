@@ -83,40 +83,44 @@ public class SecurityConfig {
                 .exceptionHandling(exception -> exception.authenticationEntryPoint(unauthorizedHandler))
                 
                 .authorizeHttpRequests(auth -> auth
-                        
-                        // --- DONO KE SAARE .requestMatchers() YAHAN HAIN ---
-                        
-                        .requestMatchers("/api/auth/**").permitAll()
-                        .requestMatchers("/api/newsletter/**").permitAll()
-                        .requestMatchers("/api/contact/**").permitAll()
-                        .requestMatchers("/api/bookings/all").permitAll()
-                        .requestMatchers("/api/bookings/{bookingId}/status").permitAll()
-                        .requestMatchers("/api/bookings/**").authenticated()
-                        .requestMatchers("/api/chat/**").permitAll()
-                        .requestMatchers("/api/managehalls/**").permitAll()
-                        .requestMatchers("/api/managehallbookings/**").permitAll()
-                        .requestMatchers("/api/contact-eventmate/**").permitAll()
 
-                        
-                        .requestMatchers("/api/bot/**").permitAll()
-                      
-                        
-                       
-                        .requestMatchers("/api/photographers/available").permitAll()
-                        .requestMatchers("/api/photographers/{id}").permitAll()
-                        .requestMatchers("/api/photographers/all").permitAll()
-                        .requestMatchers("/api/planners/available").permitAll()
-                        .requestMatchers("/api/planners/{id}").permitAll()
-                        .requestMatchers("/api/project-qa/**").permitAll()
-                        
-                    
-                        .requestMatchers("/api/photographers/book").authenticated() 
-                        .requestMatchers("/api/planners/book").authenticated()
-                        .requestMatchers("/api/halls/**").permitAll()
-                        
-                    
-                        .anyRequest().authenticated()
-                )
+        // Authentication
+        .requestMatchers("/api/auth/**").permitAll()
+
+        // Public APIs
+        .requestMatchers("/api/newsletter/**").permitAll()
+        .requestMatchers("/api/contact/**").permitAll()
+        .requestMatchers("/api/chat/**").permitAll()
+        .requestMatchers("/api/bot/**").permitAll()
+        .requestMatchers("/api/project-qa/**").permitAll()
+        .requestMatchers("/api/contact-eventmate/**").permitAll()
+
+        // Hall APIs
+        .requestMatchers("/api/halls/**").permitAll()
+        .requestMatchers("/api/managehalls/**").permitAll()
+
+        // Booking APIs
+        .requestMatchers("/api/bookings/all").permitAll()
+        .requestMatchers("/api/bookings/hall/**").permitAll()   // ✅ FIX
+        .requestMatchers("/api/bookings/{bookingId}/status").permitAll()
+        .requestMatchers("/api/managehallbookings/**").permitAll()
+
+        // Photographer APIs
+        .requestMatchers("/api/photographers/available").permitAll()
+        .requestMatchers("/api/photographers/{id}").permitAll()
+        .requestMatchers("/api/photographers/all").permitAll()
+
+        // Planner APIs
+        .requestMatchers("/api/planners/available").permitAll()
+        .requestMatchers("/api/planners/{id}").permitAll()
+
+        // Protected APIs
+        .requestMatchers("/api/bookings/**").authenticated()
+        .requestMatchers("/api/photographers/book").authenticated()
+        .requestMatchers("/api/planners/book").authenticated()
+
+        .anyRequest().authenticated()
+)
                 
                 .sessionManagement(sess -> sess.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authenticationProvider(authenticationProvider())
