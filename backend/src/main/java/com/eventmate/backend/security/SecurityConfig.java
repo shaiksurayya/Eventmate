@@ -94,24 +94,24 @@ public class SecurityConfig {
                         .requestMatchers("/api/managehallbookings/**").permitAll()
                         .requestMatchers("/api/contact-eventmate/**").permitAll()
 
-                        // 💥 ----- यह लाइन यहाँ जोड़ी गई है ----- 💥
-                        .requestMatchers("/api/bot/**").permitAll()
-                        // 💥 ------------------------------------- 💥
                         
-                        // Surayya ke paths (Photographers, Planners, QA)
+                        .requestMatchers("/api/bot/**").permitAll()
+                      
+                        
+                       
                         .requestMatchers("/api/photographers/available").permitAll()
                         .requestMatchers("/api/photographers/{id}").permitAll()
                         .requestMatchers("/api/photographers/all").permitAll()
                         .requestMatchers("/api/planners/available").permitAll()
                         .requestMatchers("/api/planners/{id}").permitAll()
-                        .requestMatchers("api/project-qa/**").permitAll()
+                        .requestMatchers("/api/project-qa/**").permitAll()
                         
-                        // Surayya ke Authenticated paths (Login zaroori)
+                    
                         .requestMatchers("/api/photographers/book").authenticated() 
                         .requestMatchers("/api/planners/book").authenticated()
                         .requestMatchers("/api/halls/**").permitAll()
                         
-                        // Default (Baaki sabke liye login zaroori)
+                    
                         .anyRequest().authenticated()
                 )
                 

@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import { FaTimes } from "react-icons/fa";
 import axios from "axios";
-import { cakes } from "../pages/Cakes";
+import { Cakes } from "../pages/Cakes";
 import { attires } from "../pages/Attire";
 
 // --- Helper Functions ---
