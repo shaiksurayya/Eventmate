@@ -1,8 +1,8 @@
 import React, { useState, useRef, useEffect } from "react";
 import { FaTimes } from "react-icons/fa";
 import axios from "axios";
-import { Cakes } from "../pages/Cakes";
-import { attires } from "../pages/Attire";
+import { Cakes } from "../Pages/Cakes";
+import { attires } from "../Pages/Attire";
 
 // --- Helper Functions ---
 // (In functions mein koi badlaav nahi hai, yeh sab sahi hain)
