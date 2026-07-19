@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-
+import "./Home.css";
 const Home = ({ userId }) => {
   const [bookingCount, setBookingCount] = useState(0);
   const [recentBookings, setRecentBookings] = useState([]);
@@ -48,52 +48,35 @@ const Home = ({ userId }) => {
   useEffect(() => {
     if (userId) fetchBookings();
   }, [userId]);
+return (
+  <div className="home-container">
+    <h2 className="home-title">Dashboard Home</h2>
 
-  return (
-    <div style={{ padding: "20px" }}>
-      <h2>Dashboard Home</h2>
-
-      {/* Booking Summary Card */}
-      <div
-        style={{
-          background: "#E6F0FF",
-          padding: "20px",
-          borderRadius: "10px",
-          width: "250px",
-          marginBottom: "20px",
-        }}
-      >
-        <h3>Total Bookings</h3>
-        <p style={{ fontSize: "28px", fontWeight: "bold" }}>
-          {loading ? "..." : bookingCount}
-        </p>
+    <div className="summary-card">
+      <h3>Total Bookings</h3>
+      <div className="booking-count">
+        {loading ? "..." : bookingCount}
       </div>
+    </div>
 
-      {/* Recent Bookings */}
-      <h3>Recent Bookings</h3>
+    <h3 className="section-title">Recent Bookings</h3>
 
-      {loading ? (
-        <p>Loading...</p>
-      ) : recentBookings.length > 0 ? (
-        recentBookings.map((b, index) => (
-          <div
-            key={index}
-            style={{
-              border: "1px solid #ddd",
-              padding: "15px",
-              borderRadius: "8px",
-              marginBottom: "10px",
-            }}
-          >
+    {loading ? (
+      <p className="loading">Loading...</p>
+    ) : recentBookings.length > 0 ? (
+      <div className="bookings-list">
+        {recentBookings.map((b, index) => (
+          <div className="booking-card" key={index}>
             <h4>{b.hallName}</h4>
             <p>{b.bookingDateTime}</p>
           </div>
-        ))
-      ) : (
-        <p>No bookings found.</p>
-      )}
-    </div>
-  );
+        ))}
+      </div>
+    ) : (
+      <p className="no-bookings">No bookings found.</p>
+    )}
+  </div>
+);
 };
 
 export default Home;

@@ -20,6 +20,9 @@ public interface HallBookingRepository extends JpaRepository<HallBooking, Long> 
     @Query("SELECT hb FROM HallBooking hb JOIN FETCH hb.hall WHERE hb.user.id = :userId")
     List<HallBooking> findByUser_IdWithHall(@Param("userId") Long userId);
 
+    @Query("SELECT hb FROM HallBooking hb JOIN FETCH hb.hall")
+    List<HallBooking> findAllWithHall();
+
     List<HallBooking> findByHall_HallIdAndBookingTimeBetween(Long hallId, LocalDateTime startOfDay, LocalDateTime endOfDay);
 
     List<HallBooking> findByHall_HallId(Long hallId);

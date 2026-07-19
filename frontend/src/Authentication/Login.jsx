@@ -1,15 +1,15 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import { useAuth } from '../Context/AuthContext';
 import './AuthForm.css'; 
-
-
 
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
+  const { login } = useAuth();
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -17,15 +17,16 @@ const Login = () => {
     const userCredentials = { email, password };
     
     try {
-      
       const response = await axios.post('http://localhost:8080/api/auth/login', userCredentials);
+      const apiToken = response.data.token;
       
-      
-      alert(response.data);
-      
-      
-      navigate('/EmailOtp', { state: { email: email } }); 
-
+      if (apiToken) {
+        login(apiToken);
+        alert("Login successful!");
+        navigate('/bookings'); 
+      } else {
+        alert("Login failed: Token not received from server.");
+      }
     } catch (error) {
         console.error('Login failed:', error);
         const errorMessage = error.response?.data || 'Login failed. An unknown error occurred.';

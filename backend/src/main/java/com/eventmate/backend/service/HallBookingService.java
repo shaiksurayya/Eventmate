@@ -76,4 +76,34 @@ public class HallBookingService {
     public List<HallBooking> getBookingsByUserWithHall(Long userId) {
         return hallBookingRepository.findByUser_IdWithHall(userId);
     }
+
+    public List<HallBooking> getAllBookingsWithHall() {
+        return hallBookingRepository.findAllWithHall();
+    }
+
+    // NEW: Update booking info
+    public HallBooking updateBookingInfo(Long bookingId, HallBookingRequest request) {
+        HallBooking booking = hallBookingRepository.findById(bookingId)
+                .orElseThrow(() -> new EntityNotFoundException("Booking not found"));
+        
+        if (request.bookingTime() != null) {
+            booking.setBookingTime(request.bookingTime());
+        }
+        if (request.userName() != null) {
+            booking.setUserName(request.userName());
+        }
+        if (request.userPhone() != null) {
+            booking.setUserPhone(request.userPhone());
+        }
+        
+        return hallBookingRepository.save(booking);
+    }
+
+    // NEW: Update status (for confirm, delete request, etc)
+    public HallBooking updateBookingStatus(Long bookingId, String status) {
+        HallBooking booking = hallBookingRepository.findById(bookingId)
+                .orElseThrow(() -> new EntityNotFoundException("Booking not found"));
+        booking.setStatus(status);
+        return hallBookingRepository.save(booking);
+    }
 }

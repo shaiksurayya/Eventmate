@@ -18,6 +18,9 @@ import org.springframework.web.bind.annotation.PostMapping; // Surayya ke code s
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.eventmate.backend.models.Hall; // Surayya ke code se
 import com.eventmate.backend.models.HallBooking;
@@ -153,21 +156,27 @@ public class HallBookingController {
 
     // --- SURAYYA KA CODE: BookingDetails DTO Class ---
     public static class BookingDetails {
+        private Long bookingId;
         private Long hallId;
         private String hallName;
         private String hallAddress;
         private String bookingDateTime; // ISO or formatted string
+        private String status;
 
-        public BookingDetails(Long hallId, String hallName, String hallAddress, String bookingDateTime) {
+        public BookingDetails(Long bookingId, Long hallId, String hallName, String hallAddress, String bookingDateTime, String status) {
+            this.bookingId = bookingId;
             this.hallId = hallId;
             this.hallName = hallName;
             this.hallAddress = hallAddress;
             this.bookingDateTime = bookingDateTime;
+            this.status = status;
         }
+        public Long getBookingId() { return bookingId; }
         public Long getHallId() { return hallId; }
         public String getHallName() { return hallName; }
         public String getHallAddress() { return hallAddress; }
         public String getBookingDateTime() { return bookingDateTime; }
+        public String getStatus() { return status; }
     }
 
     // --- SURAYYA KA CODE: Date Formatter ---
@@ -189,10 +198,13 @@ public class HallBookingController {
                         var h = b.getHall();
                         String addr = (h != null ? (h.getLocation() != null ? h.getLocation() : h.getEventType()) : "");
                         String dateTime = b.getBookingTime() != null ? b.getBookingTime().format(FLAT_FORMATTER) : "";
-                        return new BookingDetails(h != null ? h.getHallId() : null,
+                        return new BookingDetails(
+                                                  b.getBookingId(),
+                                                  h != null ? h.getHallId() : null,
                                                   h != null ? h.getHallName() : "Hall",
                                                   addr,
-                                                  dateTime);
+                                                  dateTime,
+                                                  b.getStatus());
                     })
                     .collect(Collectors.toList());
 
@@ -213,16 +225,50 @@ public class HallBookingController {
                         var h = b.getHall();
                         String addr = (h != null ? (h.getLocation() != null ? h.getLocation() : h.getEventType()) : "");
                         String dateTime = b.getBookingTime() != null ? b.getBookingTime().format(FLAT_FORMATTER) : "";
-                        return new BookingDetails(h != null ? h.getHallId() : null,
+                        return new BookingDetails(
+                                                  b.getBookingId(),
+                                                  h != null ? h.getHallId() : null,
                                                   h != null ? h.getHallName() : "Hall",
                                                   addr,
-                                                  dateTime);
+                                                  dateTime,
+                                                  b.getStatus());
                     })
                     .collect(Collectors.toList());
             return ResponseEntity.ok(details);
         } catch (Exception e) {
             System.err.println("Error in getBookingDetailsByUserId: " + e.getMessage());
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(List.of());
+        }
+    }
+
+    // --- NEW: APIs for Updating Booking Info, Status, and Getting All Bookings ---
+    
+    @GetMapping("/all")
+    public ResponseEntity<List<HallBooking>> getAllBookings() {
+        return ResponseEntity.ok(hallBookingService.getAllBookingsWithHall());
+    }
+
+    @PutMapping("/{bookingId}")
+    public ResponseEntity<?> updateBookingInfo(
+            @PathVariable Long bookingId,
+            @RequestBody HallBookingRequest request) {
+        try {
+            HallBooking updatedBooking = hallBookingService.updateBookingInfo(bookingId, request);
+            return ResponseEntity.ok(updatedBooking);
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getMessage());
+        }
+    }
+
+    @PatchMapping("/{bookingId}/status")
+    public ResponseEntity<?> updateBookingStatus(
+            @PathVariable Long bookingId,
+            @RequestParam String status) {
+        try {
+            HallBooking updatedBooking = hallBookingService.updateBookingStatus(bookingId, status);
+            return ResponseEntity.ok(updatedBooking);
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getMessage());
         }
     }
 }

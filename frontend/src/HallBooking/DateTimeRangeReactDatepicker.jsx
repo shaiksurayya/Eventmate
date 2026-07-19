@@ -16,6 +16,7 @@ export default function DateTimeRangePicker() {
   const navigate = useNavigate();
 
   const today = new Date();
+  today.setHours(0, 0, 0, 0);
   const maxDate = new Date("2030-12-31T23:59:59");
 
   // 🔹 Calculate duration whenever start or end changes
@@ -42,7 +43,7 @@ export default function DateTimeRangePicker() {
       setIsAvailable(false);
       return;
     }
-    if (start < today.setHours(0, 0, 0, 0)) {
+    if (start < today) {
       setError("Start date cannot be in the past.");
       setAvailability("");
       setIsAvailable(false);

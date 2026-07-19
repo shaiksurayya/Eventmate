@@ -192,9 +192,12 @@ const PhotographerDetails = () => {
   };
   
   // --- NAYE HELPER FUNCTIONS YAHAN HONGE ---
-  const today = new Date();
-  const isDateAvailable = (date) =>
-    date >= today && date <= new Date(today.getTime() + 14 * 24 * 60 * 60 * 1000);
+  const getTodayMidnight = () => {
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+    return today;
+  };
+  const isDateAvailable = (date) => date >= getTodayMidnight();
 
   const isDateSelected = (date) =>
     selectedDate && date.toDateString() === selectedDate.toDateString();

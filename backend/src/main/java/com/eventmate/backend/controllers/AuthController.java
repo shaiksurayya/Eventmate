@@ -62,23 +62,12 @@ public class AuthController {
             authenticationManager.authenticate(
                     new UsernamePasswordAuthenticationToken(loginRequest.getEmail(), loginRequest.getPassword()));
 
-            String otp = String.format("%06d", new Random().nextInt(999999));
-            
-            // --- FIX #1 ---
             User user = userRepository.findByEmail(loginRequest.getEmail())
                     .orElseThrow(() -> new RuntimeException("User not found after successful authentication"));
             
-            user.setOtp(otp);
-            user.setOtpGeneratedTime(LocalDateTime.now());
-            userRepository.save(user);
-
-            try {
-                emailService.sendOtpEmail(loginRequest.getEmail(), otp);
-                return ResponseEntity.ok("OTP sent to your email. Please verify.");
-            } catch (Exception e) {
-                return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
-                        .body("Error: Could not send OTP email. The email address may not be active.");
-            }
+            final UserDetails userDetails = user;
+            final String jwt = jwtUtil.generateToken(userDetails);
+            return ResponseEntity.ok(new JwtResponse(jwt));
         } catch (AuthenticationException e) {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Error: Invalid email or password.");
         }

@@ -89,7 +89,11 @@ const AvailabilityBookingComponent = ({ resourceId, resourceType,eventOptions,pl
     };
 
     // Calendar ki logic
-    const isDateAvailable = (date) => date >= new Date(); // Sirf future dates available
+    const isDateAvailable = (date) => {
+        const today = new Date();
+        today.setHours(0, 0, 0, 0);
+        return date >= today;
+    };
 
     return (
         <div style={bookingStyles.container}>

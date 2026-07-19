@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import { useOwnerAuth } from '../Context/OwnerAuthContext';
 import './AuthForm.css';
 
 const LoginOwner = () => {
@@ -8,6 +9,7 @@ const LoginOwner = () => {
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
+  const { loginOwner } = useOwnerAuth();
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -18,8 +20,9 @@ const LoginOwner = () => {
       // Use your backend API endpoint for owner login
       const response = await axios.post('http://localhost:8080/api/auth/login-owner', ownerCredentials);
 
-      alert(response.data);
-      navigate('/owner-email-otp', { state: { email: email } });
+      alert("Login successful!");
+      loginOwner('dummy-owner-token');
+      navigate('/owner/manage-halls');
     } catch (error) {
       console.error('Owner login failed:', error);
       const errorMessage = error.response?.data || 'Login failed. Please try again.';

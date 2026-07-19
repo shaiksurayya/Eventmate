@@ -35,4 +35,7 @@ public class HallBooking {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
+
+    @Column(name = "status", nullable = false)
+    private String status = "PENDING"; // e.g. PENDING, CONFIRMED, CANCELLED, DELETE_REQUESTED
 }

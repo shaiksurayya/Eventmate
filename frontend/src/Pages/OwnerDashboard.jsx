@@ -38,7 +38,7 @@ const OwnerDashboardLayout = ({ children }) => {
               Why Add Halls?
             </NavLink>
           </li>
-          <li>
+          {/* <li>
             <NavLink
               to="/owner/bookings"
               className={({ isActive }) =>
@@ -47,7 +47,7 @@ const OwnerDashboardLayout = ({ children }) => {
             >
               Bookings
             </NavLink>
-          </li>
+          </li> */}
           <li>
             <NavLink
               to="/owner/contact-eventmate"

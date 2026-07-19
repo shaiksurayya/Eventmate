@@ -176,19 +176,7 @@ public class OwnerAuthController {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Error: Invalid email or password.");
         }
 
-        // Generate OTP
-        String otp = String.format("%06d", new Random().nextInt(999999));
-        owner.setOtp(otp);
-        owner.setOtpGeneratedTime(LocalDateTime.now());
-        ownerRepository.save(owner);
-
-        try {
-            emailService.sendOtpEmail(owner.getEmail(), otp);
-            return ResponseEntity.ok("OTP sent to your email. Please verify.");
-        } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
-                    .body("Error: Could not send OTP email.");
-        }
+        return ResponseEntity.ok("Owner logged in successfully!");
     }
 
     // ---------------- VERIFY OTP ----------------
