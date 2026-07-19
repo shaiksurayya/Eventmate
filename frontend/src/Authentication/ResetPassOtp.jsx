@@ -71,11 +71,14 @@ function ResetPassOtp() {
         }
 
         try {
-            const response = await axios.post('http://localhost:8080/api/auth/reset-password', {
-                email,
-                otp,
-                newPassword
-            });
+           const response = await axios.post(
+    'https://eventmate-production-b589.up.railway.app/api/auth/reset-password',
+    {
+        email,
+        otp,
+        newPassword
+    }
+);
             alert(response.data);
             navigate('/login');
         } catch (error) {

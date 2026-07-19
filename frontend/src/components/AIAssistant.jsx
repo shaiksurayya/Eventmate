@@ -183,7 +183,9 @@ const AIAssistant = () => {
   useEffect(() => {
     const fetchVenueNames = async () => {
        try {
-         const response = await axios.get("http://localhost:8080/api/halls");
+         const response = await axios.get(
+  "https://eventmate-production-b589.up.railway.app/api/halls"
+);
          setAllVenueNames(response.data.map(hall => ({ hallId: hall.hallId, hallName: hall.hallName })));
        } catch (error) {
          console.error("Could not fetch venue names:", error);
@@ -459,7 +461,7 @@ if (frontendReply) {
         if (venueName && detectedDate) {
           calledSpecificAPI = true;
           try {
-            const response = await axios.get(`http://localhost:8080/api/halls/check-availability?hallName=${encodeURIComponent(venueName)}&date=${detectedDate}`);
+            const response = await axios.get(`https://eventmate-production-b589.up.railway.app/api/halls/check-availability?hallName=${encodeURIComponent(venueName)}&date=${detectedDate}`);
             botReply = response.data.message;
           } catch (err) {
             botReply = "⚠️ Sorry, I couldn't check that specific venue.";
@@ -479,7 +481,9 @@ if (frontendReply) {
             if (maxCapacity !== null) params.append('maxCapacity', maxCapacity);
             if (eventType) params.append('eventType', eventType);
 
-            const response = await axios.get(`http://localhost:8080/api/halls/search?${params.toString()}`);
+          const response = await axios.get(
+  `https://eventmate-production-b589.up.railway.app/api/halls/search?${params.toString()}`
+);
 
             if (response.status === 204 || response.data.length === 0) {
               botReply = "Sorry, I couldn't find any venues matching all your criteria.";
@@ -505,7 +509,7 @@ if (frontendReply) {
         else if (eventType) {
           calledSpecificAPI = true;
           try {
-            const response = await axios.get(`http://localhost:8080/api/halls/by-event-type?type=${encodeURIComponent(eventType)}`);
+            const response = await axios.get(`https://eventmate-production-b589.up.railway.app/api/halls/by-event-type?type=${encodeURIComponent(eventType)}`);
             if (response.status === 204 || response.data.length === 0) {
               botReply = `Sorry, I couldn't find any specific venues listed primarily for ${eventType}.`;
             } else {
@@ -525,7 +529,7 @@ if (frontendReply) {
     if (useSmartBot || !calledSpecificAPI) {
         try {
             console.log("Calling Smart Bot API (/api/bot/ask) for query:", messageText); // DEBUG
-            const response = await axios.post("http://localhost:8080/api/bot/ask", {
+            const response = await axios.post("https://eventmate-production-b589.up.railway.app/api/bot/ask", {
                 query: messageText 
             });
             

@@ -16,7 +16,10 @@ const Signup = () => {
     const user = { name, email, password };
 
     try {
-      const response = await axios.post('http://localhost:8080/api/auth/signup', user);
+      const response = await axios.post(
+  'https://eventmate-production-b589.up.railway.app/api/auth/signup',
+  user
+);
       console.log(response.data);
       alert("Signup successful! Please login to continue.");
       navigate('/login');

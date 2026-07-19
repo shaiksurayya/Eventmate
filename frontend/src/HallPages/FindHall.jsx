@@ -24,7 +24,7 @@ const FindHall = () => {
         const fetchHalls = async () => {
             try {
                 // Backend API se data fetch karein
-                const response = await fetch('http://localhost:8080/api/halls');
+                const response = await fetch('https://eventmate-production-b589.up.railway.app/api/halls');
                 if (!response.ok) {
                     throw new Error('Network response was not ok');
                 }

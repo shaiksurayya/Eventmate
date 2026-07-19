@@ -63,7 +63,7 @@ const HallBookingForm = () => {
             if (token) {
                 headers["Authorization"] = `Bearer ${token}`;
             }
-            const response = await axios.post('http://localhost:8080/api/bookings', bookingData, { headers });
+            const response = await axios.post('https://eventmate-production-b589.up.railway.app/api/bookings', bookingData, { headers });
             // On success, navigate to the success page
             navigate("/SuccessMsg", { state: { bookingDetails: response.data } });
 

@@ -17,7 +17,11 @@ const Login = () => {
     const userCredentials = { email, password };
     
     try {
-      const response = await axios.post('http://localhost:8080/api/auth/login', userCredentials);
+      const response = await axios.post(
+  'https://eventmate-production-b589.up.railway.app/api/auth/login',
+  userCredentials
+);
+    
       const apiToken = response.data.token;
       
       if (apiToken) {

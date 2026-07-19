@@ -85,7 +85,7 @@ const Contact = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://localhost:8080/api/contact/send', formData);
+      const response = await axios.post('https://eventmate-production-b589.up.railway.app/api/contact/send', formData);
       alert(response.data);
       setFormData({ name: '', email: '', message: '' });
     } catch (error) {

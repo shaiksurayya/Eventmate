@@ -23,7 +23,7 @@ const OwnerBookings = () => {
   const fetchOwnerBookings = async () => {
     setLoading(true);
     try {
-      const response = await fetch("http://localhost:8080/api/bookings/all");
+      const response = await fetch("https://eventmate-production-b589.up.railway.app/api/bookings/all");
       if (!response.ok) {
         throw new Error("Failed to fetch bookings");
       }
@@ -42,7 +42,7 @@ const OwnerBookings = () => {
 
   const updateStatus = async (bookingId, status) => {
     try {
-      await axios.patch(`http://localhost:8080/api/bookings/${bookingId}/status?status=${status}`);
+      await axios.patch(`https://eventmate-production-b589.up.railway.app/api/bookings/${bookingId}/status?status=${status}`);
       setBookings((prev) => prev.map(b => b.bookingId === bookingId ? { ...b, status } : b));
     } catch (err) {
       alert("Failed to update status");

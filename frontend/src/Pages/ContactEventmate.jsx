@@ -89,7 +89,7 @@ const ContactEventmate = () => {
     e.preventDefault();
 
     try {
-      const response = await fetch("http://localhost:8080/api/contact-eventmate/send", {
+      const response = await fetch("https://eventmate-production-b589.up.railway.app/api/contact-eventmate/send", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

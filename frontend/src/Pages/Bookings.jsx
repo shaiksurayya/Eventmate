@@ -29,7 +29,7 @@ const Bookings = ({ userId }) => {
   const fetchDetails = async () => {
     setLoading(true);
     try {
-      const base = "http://localhost:8080/api/bookings";
+      const base = "https://eventmate-production-b589.up.railway.app/api/bookings";
       const detailsUrl = userId
         ? `${base}/user/${userId}/details`
         : `${base}/user/details`;

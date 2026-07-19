@@ -17,7 +17,10 @@ const SignupOwner = () => {
 
     try {
       // Use your backend API endpoint for owner signup
-      const response = await axios.post('http://localhost:8080/api/auth/signup-owner', owner);
+     const response = await axios.post(
+  'https://eventmate-production-b589.up.railway.app/api/auth/signup-owner',
+  owner
+);
       console.log(response.data);
       alert("Owner Signup successful! Please login to continue.");
       navigate('/login-owner');

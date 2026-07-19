@@ -19,10 +19,13 @@ const OwnerEmailOtp = () => {
     setError('');
     setLoading(true);
     try {
-      const response = await axios.post('http://localhost:8080/api/auth/verify-otp-owner', {
-        email,
-        password: otp // backend expects OTP in password
-      });
+      const response = await axios.post(
+  'https://eventmate-production-b589.up.railway.app/api/auth/verify-otp-owner',
+  {
+    email,
+    password: otp // backend expects OTP in password
+  }
+);
 
       alert(response.data);
       loginOwner('dummy-owner-token'); // Ideally replace with backend JWT token

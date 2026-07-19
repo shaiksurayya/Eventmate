@@ -36,9 +36,9 @@ function ForgotPass() {
         e.preventDefault();
         try {
            
-            const response = await axios.post('http://localhost:8080/api/auth/forgot-password', {
-                email: email 
-            });
+          const response = await axios.post('https://eventmate-production-b589.up.railway.app/api/auth/forgot-password', {
+    email: email 
+});
 
           
             alert(response.data);

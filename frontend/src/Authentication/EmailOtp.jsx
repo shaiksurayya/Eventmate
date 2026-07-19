@@ -93,7 +93,10 @@ function EmailOtp() {
         setError(''); // Clear previous errors on a new submission
 
         try {
-            const response = await axios.post('http://localhost:8080/api/auth/verify-otp', { email, otp });
+            const response = await axios.post(
+  'https://eventmate-production-b589.up.railway.app/api/auth/verify-otp',
+  { email, otp }
+);
             const apiToken = response.data.token;
 
             if (apiToken) {

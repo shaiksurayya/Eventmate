@@ -18,7 +18,10 @@ const LoginOwner = () => {
 
     try {
       // Use your backend API endpoint for owner login
-      const response = await axios.post('http://localhost:8080/api/auth/login-owner', ownerCredentials);
+      const response = await axios.post(
+  'https://eventmate-production-b589.up.railway.app/api/auth/login-owner',
+  ownerCredentials
+);
 
       alert("Login successful!");
       loginOwner('dummy-owner-token');
