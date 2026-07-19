@@ -1032,7 +1032,7 @@ const PhotographerDetails = () => {
 //   // --- NAYA DATA FETCHING LOGIC ---
 //   useEffect(() => {
 //     // Backend se photographer ki details fetch karein
-//     //axios.get(`http://localhost:8080/api/photographers/${id}`) // <-- YEH AAPKA ENDPOINT HONA CHAHIYE
+//    ) // <-- YEH AAPKA ENDPOINT HONA CHAHIYE
 //     apiClient.get(`/api/photographers/${id}`)
 
 //         .then(response => {
@@ -1135,7 +1135,7 @@ const PhotographerDetails = () => {
 
 //     try {
 //         // 4. Backend API ko call karein
-//         //const response = await axios.post('http://localhost:8080/api/photographers/book', bookingRequest);
+//      graphers/book', bookingRequest);
 //                 const response = await apiClient.post('/api/photographers/book', bookingRequest); 
 
 

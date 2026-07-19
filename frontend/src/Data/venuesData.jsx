@@ -57,8 +57,7 @@ export const allVenues = [
 
 //   useEffect(() => {
 //     const token = localStorage.getItem("token");
-
-//     fetch(`http://localhost:8080/api/managehalls/${id}`, {
+//     fetch(`https://eventmate-production-b589.up.railway.app/api/managehalls/${id}`, {
 //       headers: {
 //         "Authorization": `Bearer ${token}`
 //       }

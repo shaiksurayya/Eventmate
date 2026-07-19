@@ -149,7 +149,7 @@ export default OwnerEmailOtp;
 //   const handleVerifyOtp = async (e) => {
 //     e.preventDefault();
 //     try {
-//       const response = await axios.post('http://localhost:8080/api/auth/verify-otp-owner', {
+//       const response = await axios.post('https://eventmate-production-b589.up.railway.app/api/auth/verify-otp-owner', {
 //         email,
 //         password: otp // backend expects OTP in password
 //       });
