@@ -14,7 +14,7 @@ const ViewHalls = () => {
   useEffect(() => {
     const fetchHalls = async () => {
       try {
-        const response = await fetch("http://localhost:8080/api/managehalls");
+        const response = await fetch("https://eventmate-production-b589.up.railway.app/api/managehalls");
         if (!response.ok) throw new Error("Failed to fetch halls");
         const data = await response.json();
         setHalls(data);
@@ -40,7 +40,7 @@ const ViewHalls = () => {
   const handleBookingSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch("http://localhost:8080/api/managehallbookings", {
+      const response = await fetch("https://eventmate-production-b589.up.railway.app/api/managehallbookings", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
