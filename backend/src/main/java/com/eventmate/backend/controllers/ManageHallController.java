@@ -9,7 +9,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/managehalls")
-@CrossOrigin(origins = "http://localhost:5173") // Allow React frontend
+@CrossOrigin(origins = {"http://localhost:5173", "https://eventmate-pi.vercel.app"}) // Allow React frontend
 public class ManageHallController {
 
     @Autowired

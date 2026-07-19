@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/contact-eventmate")
-@CrossOrigin(origins = "http://localhost:5173") // Allow React (frontend) access
+@CrossOrigin(origins = {"http://localhost:5173", "https://eventmate-pi.vercel.app"})// Allow React (frontend) access
 public class ContactEventmateController {
 
     @Autowired

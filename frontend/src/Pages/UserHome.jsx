@@ -9,7 +9,7 @@ const Home = ({ userId }) => {
 
   const fetchBookings = async () => {
     try {
-      const base = "http://localhost:8080/api/bookings";
+      const base = "https://eventmate-production-b589.up.railway.app/api/bookings";
       const detailsUrl = `${base}/user/${userId}/details`;
       const countUrl = `${base}/user/${userId}/count`;
 

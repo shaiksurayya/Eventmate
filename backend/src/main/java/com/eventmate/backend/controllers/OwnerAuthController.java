@@ -134,7 +134,7 @@ import java.util.Random;
 
 @RestController
 @RequestMapping("/api/auth")
-@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin(origins = "http://localhost:3000","https://eventmate-pi.vercel.app") // Allow React frontend
 public class OwnerAuthController {
 
     @Autowired

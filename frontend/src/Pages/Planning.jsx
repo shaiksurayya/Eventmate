@@ -563,7 +563,7 @@ const Planning = () => {
   useEffect(() => {
     const fetchVenues = async () => {
       try {
-        const response = await fetch("http://localhost:8080/api/halls");
+        const response = await fetch("https://eventmate-production-b589.up.railway.app/api/halls");
         if (!response.ok) throw new Error("Failed to fetch venue data");
         const data = await response.json();
 

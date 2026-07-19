@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/newsletter")
-@CrossOrigin(origins = "http://localhost:5173") // allow your frontend
+@CrossOrigin(origins = {"http://localhost:5173", "https://eventmate-pi.vercel.app"}) // allow your frontend
 public class NewsletterController {
 
     @Autowired

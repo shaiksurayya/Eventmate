@@ -14,7 +14,7 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/api/managehallbookings")
-@CrossOrigin(origins = "http://localhost:5173") // change to your React origin if needed
+@CrossOrigin(origins = {"http://localhost:5173", "https://eventmate-pi.vercel.app"}) // change to your React origin if needed
 public class ManageHallBookingController {
 
     @Autowired

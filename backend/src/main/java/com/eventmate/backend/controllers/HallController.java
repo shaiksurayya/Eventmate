@@ -68,7 +68,7 @@ import com.eventmate.backend.repositories.HallRepository;
 
 @RestController
 @RequestMapping("/api/halls")
-@CrossOrigin(origins = {"http://localhost:5173", "http://localhost:3000"})
+@CrossOrigin(origins = {"http://localhost:5173", "http://localhost:3000","https://eventmate-pi.vercel.app"})
 public class HallController {
 
     @Autowired

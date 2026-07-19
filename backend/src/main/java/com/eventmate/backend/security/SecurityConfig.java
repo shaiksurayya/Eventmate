@@ -59,19 +59,31 @@ public class SecurityConfig {
 
     // --- AAPKA CORS BEAN (YEH SAHI CHAL RAHA THA) ---
     @Bean
-    public CorsConfigurationSource corsConfigurationSource() {
-        CorsConfiguration configuration = new CorsConfiguration();
-        configuration.setAllowedOrigins(Arrays.asList(
-    "http://localhost:5173",
-    "https://eventmate-pi.vercel.app"
-));
-        configuration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE", "OPTIONS"));
-        configuration.setAllowedHeaders(Arrays.asList("Authorization", "Content-Type", "Accept"));
-        configuration.setAllowCredentials(Boolean.valueOf(true));
-        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-        source.registerCorsConfiguration("/**", configuration);
-        return source;
-    }
+    @Bean
+public CorsConfigurationSource corsConfigurationSource() {
+    CorsConfiguration configuration = new CorsConfiguration();
+
+    configuration.setAllowedOriginPatterns(Arrays.asList(
+        "http://localhost:5173",
+        "https://eventmate-pi.vercel.app",
+        "https://*.vercel.app"
+    ));
+
+    configuration.setAllowedMethods(Arrays.asList(
+        "GET", "POST", "PUT", "DELETE", "OPTIONS"
+    ));
+
+    configuration.setAllowedHeaders(Arrays.asList("*"));
+
+    configuration.setExposedHeaders(Arrays.asList("Authorization"));
+
+    configuration.setAllowCredentials(true);
+
+    UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+    source.registerCorsConfiguration("/**", configuration);
+
+    return source;
+}
 
     // --- MUKHYA MERGED FILTER CHAIN ---
     @Bean
