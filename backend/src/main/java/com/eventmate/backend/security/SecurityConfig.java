@@ -58,7 +58,7 @@ public class SecurityConfig {
     }
 
     // --- AAPKA CORS BEAN (YEH SAHI CHAL RAHA THA) ---
-    @Bean
+    
     @Bean
 public CorsConfigurationSource corsConfigurationSource() {
     CorsConfiguration configuration = new CorsConfiguration();
