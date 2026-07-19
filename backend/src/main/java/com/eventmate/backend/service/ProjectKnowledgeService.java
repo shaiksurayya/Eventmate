@@ -15,8 +15,9 @@ public class ProjectKnowledgeService {
     private final String apiKey;
 
     public ProjectKnowledgeService() {
-        // API Key load karna (Dono versions mein common tha)
-        Dotenv dotenv = Dotenv.load();
+        Dotenv dotenv = Dotenv.configure()
+        .ignoreIfMissing()
+        .load();
         this.apiKey = dotenv.get("OPENROUTER_API_KEY");
 
         this.knowledgeBase = new HashMap<>();
