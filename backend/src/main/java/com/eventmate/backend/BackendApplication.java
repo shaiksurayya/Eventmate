@@ -17,6 +17,7 @@ import com.eventmate.backend.repositories.PhotographerBookingRepository; // Impo
 import com.eventmate.backend.repositories.PhotographerRepository;
 import com.eventmate.backend.repositories.PlannerBookingRepository; // Import zaroori hai
 import com.eventmate.backend.repositories.PlannerRepository;
+import org.springframework.context.annotation.Profile;
 
 @SpringBootApplication
 public class BackendApplication {
@@ -30,7 +31,8 @@ public class BackendApplication {
     public static void main(String[] args) {
         SpringApplication.run(BackendApplication.class, args);
     }
-    @Bean
+   @Bean
+@Profile("dev")
 public CommandLineRunner initDatabase(
     HallRepository hallRepository, 
     PlannerRepository plannerRepository, 
